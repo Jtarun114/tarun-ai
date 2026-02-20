@@ -1,62 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Powerful AI Chatbot</title>
+    <title>Tarun AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #0f172a, #020617);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-top: 120px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00f5ff, #00ff9d);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 14px 30px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(90deg, #00f5ff, #00ff9d);
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00f5ff;
+        }
+
+        /* Glow Effect Lines */
+        .glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,255,255,0.15), transparent 70%);
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        /* Feature Cards */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 100px;
+            padding-bottom: 80px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            width: 220px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0,255,255,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <h2>🔥 AI Chatbot</h2>
 
-    <form id="chatForm">
-        <input type="text" id="message" placeholder="Type message..." required>
-        <button type="submit">Send</button>
-    </form>
+    <div class="navbar">
+        <div class="logo">🚀 Tarun AI</div>
+        <div class="nav-links">
+            <a href="#">Overview</a>
+            <a href="#">Technology</a>
+            <a href="#">Features</a>
+            <a href="#">Resources</a>
+        </div>
+    </div>
 
-    <h3>Response:</h3>
-    <div id="response"></div>
+    <div class="hero">
+        <div class="glow"></div>
+        <h1>Verify to Trust AI</h1>
+        <p>Introducing Intelligent AI Chatbot — Ready for the Future</p>
+        <button class="btn" onclick="window.location.href='/chat'">Launch Demo</button>
+    </div>
 
-    <hr>
-
-    <h3>Upload PDF</h3>
-    <form id="pdfForm" enctype="multipart/form-data">
-        <input type="file" id="pdfFile" required>
-        <button type="submit">Upload</button>
-    </form>
-
-    <div id="pdfResponse"></div>
-
-<script>
-document.getElementById("chatForm").onsubmit = async function(e) {
-    e.preventDefault();
-    const message = document.getElementById("message").value;
-
-    const formData = new FormData();
-    formData.append("message", message);
-
-    const res = await fetch("/chat", {
-        method: "POST",
-        body: formData
-    });
-
-    const data = await res.json();
-    document.getElementById("response").innerText = data.reply;
-};
-
-document.getElementById("pdfForm").onsubmit = async function(e) {
-    e.preventDefault();
-    const file = document.getElementById("pdfFile").files[0];
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    const res = await fetch("/upload-pdf", {
-        method: "POST",
-        body: formData
-    });
-
-    const data = await res.json();
-    document.getElementById("pdfResponse").innerText = data.summary;
-};
-</script>
+    <div class="features">
+        <div class="card">⚡ Lightning Fast AI</div>
+        <div class="card">🔐 Enterprise Security</div>
+        <div class="card">🤖 Smart Document AI</div>
+    </div>
 
 </body>
 </html>
