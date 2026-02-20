@@ -27,7 +27,7 @@
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
         }
 
@@ -49,24 +49,32 @@
             position: relative;
         }
 
-        .hero h1 {
-            font-size: 55px;
-            font-weight: 700;
-            background: linear-gradient(90deg, #00f5ff, #00ff9d);
+        .main-title {
+            font-size: 70px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00f5ff, #00ff9d, #38bdf8);
             -webkit-background-clip: text;
             color: transparent;
+            letter-spacing: 2px;
         }
 
-        .hero p {
-            margin-top: 15px;
+        .subtitle {
+            margin-top: 20px;
+            font-size: 20px;
             color: #cbd5e1;
-            font-size: 18px;
+            line-height: 1.6;
         }
 
-        .btn {
-            margin-top: 30px;
-            padding: 14px 30px;
-            border-radius: 30px;
+        .buttons {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            padding: 15px 35px;
+            border-radius: 40px;
             border: none;
             background: linear-gradient(90deg, #00f5ff, #00ff9d);
             color: black;
@@ -75,12 +83,26 @@
             transition: 0.3s;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #00f5ff;
+        .btn-primary:hover {
+            transform: scale(1.07);
+            box-shadow: 0 0 25px #00f5ff;
         }
 
-        /* Glow Effect Lines */
+        .btn-secondary {
+            padding: 15px 35px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Glow */
         .glow {
             position: absolute;
             width: 600px;
@@ -98,7 +120,7 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 100px;
+            margin-top: 120px;
             padding-bottom: 80px;
         }
 
@@ -106,7 +128,7 @@
             background: rgba(255,255,255,0.05);
             padding: 30px;
             border-radius: 15px;
-            width: 220px;
+            width: 240px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
@@ -122,6 +144,10 @@
             .features {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .main-title {
+                font-size: 45px;
             }
         }
 
@@ -141,9 +167,23 @@
 
     <div class="hero">
         <div class="glow"></div>
-        <h1>Verify to Trust AI</h1>
-        <p>Introducing Intelligent AI Chatbot — Ready for the Future</p>
-        <button class="btn" onclick="window.location.href='/chat'">Launch Demo</button>
+
+        <h1 class="main-title">Tarun AI</h1>
+
+        <p class="subtitle">
+            Next Generation Intelligent AI Assistant <br>
+            Built for Speed • Security • Innovation
+        </p>
+
+        <div class="buttons">
+            <button class="btn-primary" onclick="window.location.href='/chat'">
+                🚀 Launch AI
+            </button>
+
+            <button class="btn-secondary">
+                Learn More
+            </button>
+        </div>
     </div>
 
     <div class="features">
