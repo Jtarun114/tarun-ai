@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Powerful AI Chatbot</title>
+</head>
+<body>
+    <h2>🔥 AI Chatbot</h2>
+
+    <form id="chatForm">
+        <input type="text" id="message" placeholder="Type message..." required>
+        <button type="submit">Send</button>
+    </form>
+
+    <h3>Response:</h3>
+    <div id="response"></div>
+
+    <hr>
+
+    <h3>Upload PDF</h3>
+    <form id="pdfForm" enctype="multipart/form-data">
+        <input type="file" id="pdfFile" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <div id="pdfResponse"></div>
+
+<script>
+document.getElementById("chatForm").onsubmit = async function(e) {
+    e.preventDefault();
+    const message = document.getElementById("message").value;
+
+    const formData = new FormData();
+    formData.append("message", message);
+
+    const res = await fetch("/chat", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await res.json();
+    document.getElementById("response").innerText = data.reply;
+};
+
+document.getElementById("pdfForm").onsubmit = async function(e) {
+    e.preventDefault();
+    const file = document.getElementById("pdfFile").files[0];
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const res = await fetch("/upload-pdf", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await res.json();
+    document.getElementById("pdfResponse").innerText = data.summary;
+};
+</script>
+
+</body>
+</html>
