@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tarun AI</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+            padding: 40px;
+        }
+
+        #chatbox {
+            width: 60%;
+            margin: auto;
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 20px;
+            background: #1e293b;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 50%;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: cyan;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚀 Tarun AI</h1>
+
+<div id="chatbox"></div>
+
+<input type="text" id="message" placeholder="Ask Tarun AI..." />
+<button onclick="sendMessage()">Send</button>
+
+<script>
+async function sendMessage() {
+    const message = document.getElementById("message").value;
+
+    const chatbox = document.getElementById("chatbox");
+    chatbox.innerHTML += "<p><b>You:</b> " + message + "</p>";
+
+    const response = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message })
+    });
+
+    const data = await response.json();
+    chatbox.innerHTML += "<p><b>Tarun AI:</b> " + data.response + "</p>";
+
+    document.getElementById("message").value = "";
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
+</script>
+
+</body>
+</html>
